@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>advyy.exe</title>
+  <style>
+    /* RESET BASE */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e1e1e;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* FADE-IN generale */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Glow Neon */
+    .neon-text {
+      color: #d6aaff;
+      text-shadow:
+        0 0 5px #b86eff,
+        0 0 10px #b86eff,
+        0 0 20px #b86eff,
+        0 0 40px #e3c7ff;
+    }
+
+    /* Layout comuni */
+    .header, .content-section, .info-section {
+      background-color: #2a2a2a;
+      padding: 40px 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 900px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #444;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .subtext {
+      font-size: 1em;
+      color: #bbb;
+    }
+
+    /* Sezione contenuto */
+    .content-section h2,
+    .info-section h2 {
+      color: #b8a1ff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .content-section p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    /* Info grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .info-card {
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px #a76bff55;
+    }
+
+    .icon {
+      font-size: 1.8em;
+    }
+
+    .info-card h3 {
+      margin: 0;
+      color: #fff;
+      font-size: 1.1em;
+    }
+
+    .info-card p {
+      margin: 4px 0 0;
+      color: #bbb;
+    }
+  
+   .social-icons {
+      text-align: center;
+      padding: 30px 0 60px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      background-color: #29235c;
+      padding: 15px;
+      margin: 8px;
+      border-radius: 12px;
+      font-size: 24px;
+      color: #b79bff;
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background-color: #3d2e82;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 0 10px #b79bff44;
+    }
+ 
+     p.subtitle {
+      font-size: 1.2em;
+      opacity: 0.8;
+      margin-bottom: 40px;
+    }
+ .skills-section {
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.skills-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.skills-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skills-list span {
+  padding: 10px 18px;
+  border: 1px solid #555;
+  border-radius: 10px;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.skills-list span:hover {
+  background-color: #2e2e2e;
+  color: #b79bff;
+  box-shadow: 0 0 6px #b79bff55;
+}
+
+.neon-text {
+  color: #ffffff;
+  text-shadow: 0 0 5px #b1b1b1, 0 0 10px #b79bff;
+}
+
+ </style>
+</head>
+<body>
+
+  <!-- header -->
+  <div class="header fade-in" style="animation-delay: 0.2s">
+    <img src="https://avatars.githubusercontent.com/u/205342932?v=4" alt="Profilo" class="profile-pic">
+    <h1>Ciao, sono <span class="neon-text">Advyy</span></h1>
+    <p class="subtext">SONO UN FOTTUTO SKIDDER</p>
+  </div>
+
+  <!-- descrizione -->
+  <div class="content-section fade-in" style="animation-delay: 0.4s">
+    <h2><span class="neon-text">Chi sono</span></h2>
+    <p>
+      Sono uno studente di un Istituto Tecnico, che personalmente ho iniziato da quasi 2 anni (circa)      
+      
+    </p>
+    <p>
+     Sono un appassionato di informatica/meccanica fin da bambino e ho iniziato a devvare nel 2020, nonostante questo mi reputo ancora uno Skidder
+    </p>
+  </div>
+
+  <!-- info -->
+  <div class="info-section fade-in" style="animation-delay: 0.6s">
+    <h2><span class="neon-text">Informazioni</span></h2>
+    <div class="info-grid">
+
+      <div class="info-card">
+        <span class="icon">🏫</span>
+        <div>
+          <h3>Indirizzo scolastico</h3>
+          <p>Informatica e telecomunicazioni</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="icon">🌐</span>
+        <div>
+          <h3>Posizione</h3>
+          <p>Ferrara, Italia</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="icon">🎨</span>
+        <div>
+          <h3>Colore preferito</h3>
+          <p>Viola</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="icon">💻</span>
+        <div>
+          <h3>Linguaggio preferito</h3>
+          <p>JavaScript</p>
+        </div>
+      </div>
+ 
+      <div class="info-card">
+        <span class="icon">🔷</span>
+        <div>
+          <h3>Discord</h3>
+          <p>40silent, dragodelletette</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="icon">⚙️</span>
+        <div>
+          <h3>Github</h3>
+          <p>@SkeleAdvyy</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- skills -->
+<div class="skills-section">
+  <h2><span class="neon-text">Skills</span></h2>
+  <div class="skills-list">
+    <span>JavaScript</span>
+    <span>Node.js</span>
+    <span>HTML</span>
+    <span>VS Code</span>
+  </div>
+</div>
+
+</body>
+</html>
