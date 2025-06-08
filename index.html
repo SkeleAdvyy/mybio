@@ -194,10 +194,57 @@
 
 .neon-text {
   color: #ffffff;
-  text-shadow: 0 0 5px #b1b1b1, 0 0 10px #b79bff;
+  text-shadow: 0 0 5px hsl(0, 0%, 69%), 0 0 10px #b79bff;
 }
 
- </style>
+.projects-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-top: 20px;
+}
+
+.project-card {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transform: perspective(800px) rotateX(5deg) rotateY(-5deg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  width: 300px;
+  text-align: center;
+}
+
+.project-card:hover {
+  transform: perspective(800px) rotateX(0deg) rotateY(0deg) scale(1.03);
+  box-shadow: 0 0 20px #b79bff55;
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-button {
+  display: inline-block;
+  margin: 15px 0;
+  padding: 10px 20px;
+  background-color: #29235c;
+  color: #b79bff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.project-button:hover {
+  background-color: #3d2e82;
+  color: #fff;
+  box-shadow: 0 0 10px #b79bff66;
+}
+
+</style>
 </head>
 <body>
 
@@ -287,5 +334,26 @@
   </div>
 </div>
 
+<!-- Altri Progetti -->
+<div class="content-section fade-in" style="animation-delay: 0.8s">
+  <h2><span class="neon-text">Altri Progetti</span></h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3 class="project-title">Password Generator</h3>
+      <img src="https://i.ibb.co/HLytMRMy/B52-EE588-6-FF4-477-F-8-C1-E-124-B472531-CD.png" alt="Progetto 1">
+      <a href="https://skeleadvyy.github.io/passwordgen" target="_blank" class="project-button">Visita</a>
+    </div>
+    <div class="project-card">
+      <h3 class="project-title">Terminale</h3>
+      <img src="https://i.ibb.co/Wvx5b1vY/image-20-1.png" alt="Progetto 2">
+      <a href="https://skeleadvyy.github.io/terminal" target="_blank" class="project-button">Visita</a>
+    </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
 </body>
 </html>
+
