@@ -60,14 +60,13 @@
     }
 
     .hero img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid var(--border);
-  margin: 0 auto 20px;
-  display: block;
-}
-
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      margin: 0 auto 20px;
+      display: block;
+    }
 
     .hero h1 {
       font-size: 2.8rem;
@@ -198,17 +197,16 @@
         font-size: 1.5rem;
       }
     }
-  
-  #stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* dietro tutto */
-  background: transparent;
-}
 
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: transparent;
+    }
   </style>
 </head>
 <body>
@@ -266,6 +264,7 @@
   <footer>
     &copy; 2025 Advyy. Tutti i diritti riservati.
   </footer>
+
 <script>
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
@@ -291,10 +290,20 @@ for (let i = 0; i < numStars; i++) {
   });
 }
 
-window.addEventListener('mousemove', e => {
+function debounce(func, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+const updateMouse = debounce(e => {
   mouse.x = e.clientX;
   mouse.y = e.clientY;
-});
+}, 10);
+
+window.addEventListener('mousemove', updateMouse);
 
 function animate() {
   ctx.clearRect(0, 0, width, height);
@@ -306,7 +315,6 @@ function animate() {
     star.x += dx * star.speed;
     star.y += dy * star.speed;
 
-    // wrap around
     if (star.x < 0) star.x = width;
     if (star.x > width) star.x = 0;
     if (star.y < 0) star.y = height;
