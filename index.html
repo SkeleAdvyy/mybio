@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>advyy.exe</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advyy.exe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* RESET BASE */
+    :root {
+      --bg: #0e0e0e;
+      --surface: #1a1a1a;
+      --card: #222;
+      --border: #2a2a2a;
+      --text: #e0e0e0;
+      --muted: #888;
+      --accent: #646cff;
+      --radius: 12px;
+      --transition: 0.3s ease;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -12,348 +25,302 @@
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #1e1e1e;
-      color: white;
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
     }
 
-    /* FADE-IN generale */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease-out forwards;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Glow Neon */
-    .neon-text {
-      color: #d6aaff;
-      text-shadow:
-        0 0 5px #b86eff,
-        0 0 10px #b86eff,
-        0 0 20px #b86eff,
-        0 0 40px #e3c7ff;
-    }
-
-    /* Layout comuni */
-    .header, .content-section, .info-section {
-      background-color: #2a2a2a;
-      padding: 40px 20px;
-      border-radius: 10px;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 900px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .header {
-      text-align: center;
-    }
-
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #444;
-      margin-bottom: 20px;
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    h1 {
-      font-size: 2.5em;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .subtext {
-      font-size: 1em;
-      color: #bbb;
-    }
-
-    /* Sezione contenuto */
-    .content-section h2,
-    .info-section h2 {
-      color: #b8a1ff;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .content-section p {
-      font-size: 1.1em;
-      line-height: 1.6em;
-      color: #ccc;
-      margin-bottom: 15px;
-    }
-
-    /* Info grid */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .info-card {
-      background-color: #1e1e1e;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .info-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 10px #a76bff55;
-    }
-
-    .icon {
-      font-size: 1.8em;
-    }
-
-    .info-card h3 {
-      margin: 0;
-      color: #fff;
-      font-size: 1.1em;
-    }
-
-    .info-card p {
-      margin: 4px 0 0;
-      color: #bbb;
-    }
-  
-   .social-icons {
-      text-align: center;
-      padding: 30px 0 60px;
-    }
-
-    .social-icons a {
-      display: inline-block;
-      background-color: #29235c;
-      padding: 15px;
-      margin: 8px;
-      border-radius: 12px;
-      font-size: 24px;
-      color: #b79bff;
-      transition: 0.3s ease;
+    a {
+      color: var(--accent);
       text-decoration: none;
+      transition: color var(--transition);
     }
 
-    .social-icons a:hover {
-      background-color: #3d2e82;
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 0 10px #b79bff44;
+    a:hover {
+      color: #8a8dff;
     }
- 
-     p.subtitle {
-      font-size: 1.2em;
-      opacity: 0.8;
-      margin-bottom: 40px;
+
+    section {
+      padding: 64px 24px;
+      max-width: 1000px;
+      margin: auto;
     }
- .skills-section {
-  text-align: center;
-  padding-bottom: 60px;
-}
 
-.skills-section h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
+    .hero {
+      text-align: center;
+      padding-top: 100px;
+    }
 
-.skills-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.skills-list span {
-  padding: 10px 18px;
-  border: 1px solid #555;
-  border-radius: 10px;
-  background-color: #1e1e1e;
-  color: #fff;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.skills-list span:hover {
-  background-color: #2e2e2e;
-  color: #b79bff;
-  box-shadow: 0 0 6px #b79bff55;
-}
-
-.neon-text {
-  color: #ffffff;
-  text-shadow: 0 0 5px hsl(0, 0%, 69%), 0 0 10px #b79bff;
-}
-
-.projects-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding-top: 20px;
-}
-
-.project-card {
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  transform: perspective(800px) rotateX(5deg) rotateY(-5deg);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  width: 300px;
-  text-align: center;
-}
-
-.project-card:hover {
-  transform: perspective(800px) rotateX(0deg) rotateY(0deg) scale(1.03);
-  box-shadow: 0 0 20px #b79bff55;
-}
-
-.project-card img {
-  width: 100%;
-  height: auto;
+    .hero img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  margin: 0 auto 20px;
   display: block;
 }
 
-.project-button {
-  display: inline-block;
-  margin: 15px 0;
-  padding: 10px 20px;
-  background-color: #29235c;
-  color: #b79bff;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: var(--text);
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .skills-list, .projects {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .skill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      transition: background var(--transition);
+    }
+
+    .skill:hover {
+      background: #2c2c2c;
+    }
+
+    .project {
+      background: var(--card);
+      border-radius: var(--radius);
+      width: 280px;
+      overflow: hidden;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .project:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .project img {
+      width: 100%;
+      height: auto;
+    }
+
+    .project a {
+      display: block;
+      padding: 12px;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    footer {
+      text-align: center;
+      padding: 48px 20px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  
+  #stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* dietro tutto */
+  background: transparent;
 }
 
-.project-button:hover {
-  background-color: #3d2e82;
-  color: #fff;
-  box-shadow: 0 0 10px #b79bff66;
-}
-
-</style>
+  </style>
 </head>
 <body>
+  <section class="hero">
+    <img src="https://avatars.githubusercontent.com/u/205342932?v=4" alt="Profilo di Advyy">
+    <h1>Advyy</h1>
+    <p>SONO UN FOTTUTO SKIDDER</p>
+  </section>
 
-  <!-- header -->
-  <div class="header fade-in" style="animation-delay: 0.2s">
-    <img src="https://avatars.githubusercontent.com/u/205342932?v=4" alt="Profilo" class="profile-pic">
-    <h1>Ciao, sono <span class="neon-text">Advyy</span></h1>
-    <p class="subtext">SONO UN FOTTUTO SKIDDER</p>
-  </div>
-
-  <!-- descrizione -->
-  <div class="content-section fade-in" style="animation-delay: 0.4s">
-    <h2><span class="neon-text">Chi sono</span></h2>
-    <p>
-      Sono uno studente di un Istituto Tecnico, che personalmente ho iniziato da quasi 2 anni (circa)      
-      
+  <section>
+    <h2 class="section-title">Chi sono</h2>
+    <p style="text-align: center; max-width: 680px; margin: auto; color: var(--muted);">
+      Studente dell'Istituto Tecnico in Informatica e Telecomunicazioni. Programmatore dal 2020, curioso per natura, smanetto con tecnologia, meccanica e codice ogni giorno.
     </p>
-    <p>
-     Sono un appassionato di informatica/meccanica fin da bambino e ho iniziato a devvare nel 2020, nonostante questo mi reputo ancora uno Skidder
-    </p>
-  </div>
+  </section>
 
-  <!-- info -->
-  <div class="info-section fade-in" style="animation-delay: 0.6s">
-    <h2><span class="neon-text">Informazioni</span></h2>
-    <div class="info-grid">
-
-      <div class="info-card">
-        <span class="icon">🏫</span>
-        <div>
-          <h3>Indirizzo scolastico</h3>
-          <p>Informatica e telecomunicazioni</p>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <span class="icon">🌐</span>
-        <div>
-          <h3>Posizione</h3>
-          <p>Ferrara, Italia</p>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <span class="icon">🎨</span>
-        <div>
-          <h3>Colore preferito</h3>
-          <p>Viola</p>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <span class="icon">💻</span>
-        <div>
-          <h3>Linguaggio preferito</h3>
-          <p>JavaScript</p>
-        </div>
-      </div>
- 
-      <div class="info-card">
-        <span class="icon">🔷</span>
-        <div>
-          <h3>Discord</h3>
-          <p>40silent, dragodelletette</p>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <span class="icon">⚙️</span>
-        <div>
-          <h3>Github</h3>
-          <p>@SkeleAdvyy</p>
-        </div>
-      </div>
-
+  <section>
+    <h2 class="section-title">Informazioni</h2>
+    <div class="card-grid">
+      <div class="card"><h3>📍 Posizione</h3><p>Ferrara, Italia</p></div>
+      <div class="card"><h3>🏫 Scuola</h3><p>Informatica e Telecomunicazioni</p></div>
+      <div class="card"><h3>🎨 Colore preferito</h3><p>Grigio/Viola</p></div>
+      <div class="card"><h3>💻 Linguaggio</h3><p>JavaScript</p></div>
+      <div class="card"><h3>🔷 Discord</h3><p>40silent, dragodelletette</p></div>
+      <div class="card"><h3>⚙️ Github</h3><p><a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a></p></div>
     </div>
-  </div>
+  </section>
 
-<!-- skills -->
-<div class="skills-section">
-  <h2><span class="neon-text">Skills</span></h2>
-  <div class="skills-list">
-    <span>JavaScript</span>
-    <span>Node.js</span>
-    <span>HTML</span>
-    <span>VS Code</span>
-  </div>
-</div>
+  <canvas id="stars"></canvas>
 
-<!-- Altri Progetti -->
-<div class="content-section fade-in" style="animation-delay: 0.8s">
-  <h2><span class="neon-text">Altri Progetti</span></h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3 class="project-title">Password Generator</h3>
-      <img src="https://i.ibb.co/HLytMRMy/B52-EE588-6-FF4-477-F-8-C1-E-124-B472531-CD.png" alt="Progetto 1">
-      <a href="https://skeleadvyy.github.io/passwordgen" target="_blank" class="project-button">Visita</a>
+  <section>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-list">
+      <div class="skill">JavaScript</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">HTML</div>
+      <div class="skill">VS Code</div>
     </div>
-    <div class="project-card">
-      <h3 class="project-title">Terminale</h3>
-      <img src="https://i.ibb.co/Wvx5b1vY/image-20-1.png" alt="Progetto 2">
-      <a href="https://skeleadvyy.github.io/terminal" target="_blank" class="project-button">Visita</a>
-    </div>
-    </div>
-  </div>
-</div>
+  </section>
 
-  </div>
-</div>
+  <section>
+    <h2 class="section-title">Progetti</h2>
+    <div class="projects">
+      <div class="project">
+        <img src="https://i.ibb.co/HLytMRMy/B52-EE588-6-FF4-477-F-8-C1-E-124-B472531-CD.png" alt="Password Generator">
+        <a href="https://skeleadvyy.github.io/passwordgen" target="_blank">Password Generator</a>
+      </div>
+      <div class="project">
+        <img src="https://i.ibb.co/Wvx5b1vY/image-20-1.png" alt="Terminale">
+        <a href="https://skeleadvyy.github.io/terminal" target="_blank">Terminale Web</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Advyy. Tutti i diritti riservati.
+  </footer>
+<script>
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let stars = [];
+const numStars = 100;
+let mouse = { x: 0, y: 0 };
+
+function resize() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+for (let i = 0; i < numStars; i++) {
+  stars.push({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    radius: Math.random() * 1.5 + 0.5,
+    speed: Math.random() * 0.5 + 0.2
+  });
+}
+
+window.addEventListener('mousemove', e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = '#ffffff';
+
+  for (let star of stars) {
+    let dx = (mouse.x - width / 2) * 0.001;
+    let dy = (mouse.y - height / 2) * 0.001;
+    star.x += dx * star.speed;
+    star.y += dy * star.speed;
+
+    // wrap around
+    if (star.x < 0) star.x = width;
+    if (star.x > width) star.x = 0;
+    if (star.y < 0) star.y = height;
+    if (star.y > height) star.y = 0;
+
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
 </body>
 </html>
-
