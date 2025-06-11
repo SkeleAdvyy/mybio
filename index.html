@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Advyy.exe</title>
+  <title>advyy.exe</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -13,16 +13,28 @@
       --border: #2a2a2a;
       --text: #e0e0e0;
       --muted: #888;
-      --accent: #646cff;
+      --accent: #ffffff;
       --radius: 12px;
       --transition: 0.3s ease;
+      --btn-bg: var(--card);
+      --btn-text: var(--text);
+      --btn-hover-bg: var(--accent);
+      --btn-hover-text: black;
+      --star-color: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    body.light {
+      --bg: #ffffff;
+      --surface: #f0f0f0;
+      --card: #ffffff;
+      --border: #cccccc;
+      --text: #111111;
+      --muted: #666666;
+      --btn-hover-text: white;
+      --star-color: #000000;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -33,280 +45,229 @@
       scroll-behavior: smooth;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    img { max-width: 100%; display: block; }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
+    a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: #8a8dff; }
 
-    a:hover {
-      color: #8a8dff;
-    }
+    section { padding: 64px 24px; max-width: 1000px; margin: auto; }
+    .section-title { text-align: center; font-size: 2rem; margin-bottom: 2rem; line-height: 1.2; }
 
-    section {
-      padding: 64px 24px;
-      max-width: 1000px;
-      margin: auto;
-    }
+    .hero { text-align: center; padding-top: 100px; }
+    .hero img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--border); margin: 0 auto 20px; }
+    .hero h1 { font-size: 2.8rem; font-weight: 700; }
+    .hero p { font-size: 1.1rem; color: var(--muted); }
 
-    .hero {
-      text-align: center;
-      padding-top: 100px;
-    }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition), border var(--transition);
+}
 
-    .hero img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid var(--border);
-      margin: 0 auto 20px;
-      display: block;
-    }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid white;
+}
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: var(--muted); }
 
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 40px;
-      color: var(--text);
-    }
-
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: var(--accent);
-      margin: 12px auto 0;
-      border-radius: 2px;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
-
-    .card {
-      background: var(--card);
-      padding: 20px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .skills-list, .projects {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
+    .skills-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
     .skill {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 8px 16px;
-      font-size: 0.95rem;
       transition: background var(--transition);
     }
+    .skill:hover { background: #2c2c2c; }
 
-    .skill:hover {
-      background: #2c2c2c;
+    .carousel-wrapper { position: relative; padding: 1rem 2rem; overflow: hidden; }
+    body.light .carousel-wrapper { background: #eaeaea; }
+    .carousel {
+      display: flex; gap: 1.5rem; overflow-x: auto;
+      scroll-behavior: smooth; scroll-snap-type: x mandatory; padding: 1rem 0;
     }
-
+    .carousel::-webkit-scrollbar { display: none; }
     .project {
-      background: var(--card);
-      border-radius: var(--radius);
-      width: 280px;
-      overflow: hidden;
-      text-align: center;
-      border: 1px solid var(--border);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .project:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    .project img {
-      width: 100%;
-      height: auto;
-    }
-
-    .project a {
-      display: block;
-      padding: 12px;
-      font-weight: 600;
-      color: var(--text);
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-    }
-
-    footer {
-      text-align: center;
-      padding: 48px 20px;
-      font-size: 0.9rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      margin-top: 60px;
-    }
-
-    @media (max-width: 500px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
-      }
-    }
-
-    #stars {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: transparent;
-    }
- 
-.carousel-wrapper {
-  position: relative;
-  overflow: hidden;
-  padding: 0 4rem;
-}
-
-.carousel {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 1rem 0;
-  scroll-snap-type: x mandatory;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.project {
-  background-color: #111;
-  border: 1px solid #333;
-  border-radius: 0.75rem;
+  background: var(--card);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
   overflow: hidden;
   width: 320px;
   flex-shrink: 0;
   scroll-snap-align: start;
-  box-shadow: 0 0 10px #00000033;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: border 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.project img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.project:hover {
+  border: 2px solid white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transform: scale(1.01);
 }
 
-.project a {
-  display: block;
-  padding: 1rem;
-  background: #000;
-  color: #fff;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-}
 
-.project a:hover {
-  background-color: #1a1a1a;
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #111;
-  border: 1px solid #333;
+    .carousel-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background-color: #222;
   color: white;
-  border-radius: 999px;
-  width: 44px;
-  height: 44px;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-.arrow:hover {
-  background-color: #6c6cff;
-  color: black;
+.carousel-button:hover {
+  border: 2px solid white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
-#prev {
+
+    .project img { width: 100%; height: 200px; object-fit: cover; }
+    .project a {
+      display: block; padding: 1rem;
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 600;
+      text-align: center;
+      transition: background var(--transition), color var(--transition);
+    }
+    .project a:hover { background: var(--accent); color: var(--btn-hover-text); }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--btn-bg);
+      border: 1px solid var(--border);
+      color: var(--btn-text);
+      border-radius: 999px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      z-index: 10;
+    }
+    .arrow:hover { background: var(--accent); color: var(--btn-hover-text); }
+    #prev { left: 0.5rem; }
+    #next { right: 0.5rem; }
+
+    .fixed-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 1000;
+    }
+    .fixed-buttons button {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background var(--transition), color var(--transition);
+    }
+    .fixed-buttons button:hover { background: var(--btn-hover-bg); color: var(--btn-hover-text); }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+
+    #stars {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent; z-index: -1;
+    }
+
+    body {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
   left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ff4c4c;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease-out;
+  z-index: 9999;
 }
 
-#next {
-  right: 0;
+.underline {
+  position: relative;
+  display: inline-block;
 }
 
- </style>
+.underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgb(255, 64, 64);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline:hover::after {
+  transform: scaleX(1);
+}
+
+
+.section-title.underline-hover {
+  display: inline-block;
+  line-height: 2;
+  padding-bottom: 22px;
+  margin-bottom: 0;
+  vertical-align: bottom;
+}
+
+section {
+  text-align: center;
+}
+
+
+  </style>
 </head>
-<body>
-  <section class="hero">
+<body class="dark">
+  <canvas id="stars"></canvas>
+<div class="custom-cursor"></div>
+
+  <header class="hero">
     <img src="https://avatars.githubusercontent.com/u/205342932?v=4" alt="Profilo di Advyy">
     <h1>Advyy</h1>
     <p>SONO UN FOTTUTO SKIDDER</p>
-  </section>
+  </header>
 
   <section>
-    <h2 class="section-title">Chi sono</h2>
-    <p style="text-align: center; max-width: 680px; margin: auto; color: var(--muted);">
+    <h2 class="section-title underline">Chi sono</h2>
+    <p id="bio-text" style="text-align:center; max-width:680px; margin:auto; color:var(--muted);">
       Studente dell'Istituto Tecnico in Informatica e Telecomunicazioni. Programmatore dal 2020, curioso per natura, smanetto con tecnologia, meccanica e codice ogni giorno.
     </p>
   </section>
 
   <section>
-    <h2 class="section-title">Informazioni</h2>
+   <h2 class="section-title underline">Informazioni</h2>
     <div class="card-grid">
       <div class="card"><h3>📍 Posizione</h3><p>Ferrara, Italia</p></div>
       <div class="card"><h3>🏫 Scuola</h3><p>Informatica e Telecomunicazioni</p></div>
@@ -317,10 +278,8 @@
     </div>
   </section>
 
-  <canvas id="stars"></canvas>
-
-  <section>
-  <h2 class="section-title">Progetti</h2>
+ <section>
+  <h2 class="section-title underline">Progetti</h2>
   <div class="carousel-wrapper">
     <button id="prev" class="arrow">&lt;</button>
     <div class="carousel" id="carousel">
@@ -354,7 +313,7 @@
 </section>
 
   <section>
-    <h2 class="section-title">Skills</h2>
+    <h2 class="section-title underline">Skills</h2>
     <div class="skills-list">
       <div class="skill">JavaScript</div>
       <div class="skill">Node.js</div>
@@ -367,83 +326,115 @@
     &copy; 2025 Advyy. Tutti i diritti riservati.
   </footer>
 
-<script>
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
+  <div class="fixed-buttons">
+    <button id="toggleTheme">🌓 Tema</button>
+    <button id="toggleLang">🌐 English</button>
+  </div>
 
-let width, height;
-let stars = [];
-const numStars = 100;
-let mouse = { x: 0, y: 0 };
+  <script>
+  const toggle = document.getElementById('toggleTheme');
+if(localStorage.getItem('theme') === 'light') document.body.classList.add('light');
+toggle.onclick = () => {
+  document.body.classList.toggle('light');
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+};
 
-function resize() {
-  width = canvas.width = window.innerWidth;
-  height = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
+const tbtn = document.getElementById('toggleLang');
+let italian = true;
+tbtn.onclick = () => {
+  italian = !italian;
+  tbtn.innerText = italian ? '🌐 English' : '🌐 Italiano';
 
-for (let i = 0; i < numStars; i++) {
-  stars.push({
-    x: Math.random() * width,
-    y: Math.random() * height,
-    radius: Math.random() * 1.5 + 0.5,
-    speed: Math.random() * 0.5 + 0.2
+  document.querySelector('.hero p').innerText = italian
+    ? 'SONO UN FOTTUTO SKIDDER'
+    : 'I AM A FUCKING SKIDDER';
+
+  document.getElementById('bio-text').innerText = italian
+    ? "Studente dell'Istituto Tecnico in Informatica e Telecomunicazioni. Programmatore dal 2020, curioso per natura, smanetto con tecnologia, meccanica e codice ogni giorno."
+    : "Student at the Technical Institute of Computer Science and Telecommunications. Programmer since 2020, curious by nature, I tinker with technology, mechanics, and code every day.";
+
+  document.querySelectorAll('.section-title')[0].innerText = italian ? 'Chi sono' : 'About Me';
+  document.querySelectorAll('.section-title')[1].innerText = italian ? 'Informazioni' : 'Information';
+  document.querySelectorAll('.section-title')[2].innerText = italian ? 'Progetti' : 'Projects';
+
+  const cards = document.querySelectorAll('.card');
+  const data = italian
+    ? ['📍 Posizione','Ferrara, Italia','🏫 Scuola','Informatica e Telecomunicazioni','🎨 Colore preferito','Grigio/Viola','💻 Linguaggio','JavaScript','🔷 Discord','40silent, dragodelletette','⚙️ Github','<a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a>']
+    : ['📍 Location','Ferrara, Italy','🏫 School','IT and Telecommunications','🎨 Favorite Color','Gray/Purple','💻 Language','JavaScript','🔷 Discord','40silent, dragodelletette','⚙️ Github','<a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a>'];
+  cards.forEach((c,i) => {
+    c.querySelector('h3').innerHTML = data[i*2];
+    c.querySelector('p').innerHTML = data[i*2+1];
   });
+
+  const projectTitles = italian
+    ? [
+        'Password Generator',
+        'Terminale Web',
+        'Secondo Sito',
+        'Traduttore Binario',
+        'Traduttore Morse',
+        'Tools'
+      ]
+    : [
+        'Password Generator',
+        'Web Terminal',
+        'Second Site',
+        'Binary Translator',
+        'Morse Translator',
+        'Tools'
+      ];
+  const projectLinks = document.querySelectorAll('.project a');
+  projectLinks.forEach((link, i) => {
+    if (projectTitles[i]) link.innerText = projectTitles[i];
+  });
+
+  document.querySelector('footer').innerHTML = italian
+    ? '&copy; 2025 Advyy. Tutti i diritti riservati.'
+    : '&copy; 2025 Advyy. All rights reserved.';
+};
+
+const carousel = document.getElementById('carousel');
+document.getElementById('prev').onclick = () => carousel.scrollBy({ left: -344, behavior: 'smooth' });
+document.getElementById('next').onclick = () => carousel.scrollBy({ left: 344, behavior: 'smooth' });
+
+const c = document.getElementById('stars'), ctx = c.getContext('2d');
+let w,h; const stars = [], n=100;
+let mouse = {x:0,y:0};
+function rsz(){w=c.width=innerWidth;h=c.height=innerHeight;}
+rsz(); addEventListener('resize', rsz);
+for(let i=0;i<n;i++) stars.push({
+  x:Math.random()*w,
+  y:Math.random()*h,
+  r:Math.random()*1.5+0.5,
+  s:Math.random()*0.5+0.2
+});
+addEventListener('mousemove', (e) => {mouse.x=e.clientX;mouse.y=e.clientY;});
+function anim(){
+  ctx.clearRect(0,0,w,h);
+  ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--star-color');
+  stars.forEach(s=>{
+    let dx=(mouse.x-w/2)*0.001, dy=(mouse.y-h/2)*0.001;
+    s.x=(s.x+dx*s.s+w)%w; s.y=(s.y+dy*s.s+h)%h;
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,2*Math.PI); ctx.fill();
+  });
+  requestAnimationFrame(anim);
 }
+anim();
 
-function debounce(func, delay) {
-  let timeout;
-  return function (...args) {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(this, args), delay);
-  };
-}
+const customCursor = document.querySelector('.custom-cursor');
 
-const updateMouse = debounce(e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-}, 10);
-
-window.addEventListener('mousemove', updateMouse);
-
-function animate() {
-  ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = '#ffffff';
-
-  for (let star of stars) {
-    let dx = (mouse.x - width / 2) * 0.001;
-    let dy = (mouse.y - height / 2) * 0.001;
-    star.x += dx * star.speed;
-    star.y += dy * star.speed;
-
-    if (star.x < 0) star.x = width;
-    if (star.x > width) star.x = 0;
-    if (star.y < 0) star.y = height;
-    if (star.y > height) star.y = 0;
-
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  requestAnimationFrame(animate);
-}
-animate();
-
-const carousel = document.getElementById("carousel");
-const next = document.getElementById("next");
-const prev = document.getElementById("prev");
-
-next.addEventListener("click", () => {
-  carousel.scrollBy({ left: 340, behavior: 'smooth' });
+document.addEventListener('mousemove', (e) => {
+  customCursor.style.top = `${e.clientY}px`;
+  customCursor.style.left = `${e.clientX}px`;
 });
 
-prev.addEventListener("click", () => {
-  carousel.scrollBy({ left: -340, behavior: 'smooth' });
+  document.querySelectorAll('.underline-on-click').forEach(el => {
+  el.addEventListener('click', () => {
+    el.classList.toggle('active');
+  });
 });
 
-</script>
-
+  
+  </script>
 </body>
 </html>
