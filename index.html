@@ -202,22 +202,9 @@
     }
 
     body {
-  cursor: none;
+  cursor: auto;
 }
 
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ff4c4c;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s ease-out;
-  z-index: 9999;
-}
 
 .underline {
   position: relative;
@@ -276,7 +263,6 @@ section {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <body class="dark">
   <canvas id="stars"></canvas>
-<div class="custom-cursor"></div>
 
   <header class="hero">
     <img src="https://avatars.githubusercontent.com/u/205342932?v=4" alt="Profilo di Advyy">
@@ -451,13 +437,6 @@ function anim(){
   requestAnimationFrame(anim);
 }
 anim();
-
-const customCursor = document.querySelector('.custom-cursor');
-
-document.addEventListener('mousemove', (e) => {
-  customCursor.style.top = `${e.clientY}px`;
-  customCursor.style.left = `${e.clientX}px`;
-});
 
   document.querySelectorAll('.underline-on-click').forEach(el => {
   el.addEventListener('click', () => {
