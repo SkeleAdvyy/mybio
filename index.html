@@ -286,12 +286,53 @@ section {
     <p>SONO UN FOTTUTO SKIDDER</p>
   </header>
 
-  <section class="fade-in">
-    <h2 class="section-title underline">Chi sono</h2>
-    <p id="bio-text" style="text-align:center; max-width:680px; margin:auto; color:var(--muted);">
-      Studente dell'Istituto Tecnico in Informatica e Telecomunicazioni. Programmatore dal 2020, curioso per natura, smanetto con tecnologia, meccanica e codice ogni giorno.
-    </p>
-  </section>
+<section class="fade-in">
+  <h2 class="section-title underline">Chi sono</h2>
+
+  <div style="
+    background-color: #272a2e;
+    color: #c9d1d9;
+    padding: 0;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 1rem auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+  ">
+    <div style="
+      background-color: #1d2024;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      gap: 0.75rem;
+    ">
+      <div style="display: flex; gap: 0.4rem; align-items: center;">
+        <span style="width: 12px; height: 12px; background: #ff5f56; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 12px; height: 12px; background: #ffbd2e; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 12px; height: 12px; background: #27c93f; border-radius: 50%; display: inline-block;"></span>
+        <span style="margin-left: 0.75rem; color: #c9d1d9; font-size: 0.9rem;">bio.js</span>
+      </div>
+    </div>
+
+    <pre style="margin: 1; padding: 1rem; text-align: left;"><code>
+<span style="color:#79c0ff;">  const</span> <span style="color:#d2a8ff;">bio</span> = &#123;
+  <span style="color:#7ee787;">  name</span>: <span style="color:#ffd700;">"SkeleAdvyy"</span>,
+  <span style="color:#7ee787;">  role</span>: <span style="color:#ffd700;">"Anime Enjoyer"</span>,
+ <span style="color:#7ee787;">   description</span>: <span style="color:#ffd700;">"Born Skidder, Currently a Skidder, Skidder 'til death."</span>,
+  <span style="color:#7ee787;">  passions</span>: [
+    <span style="color:#ffd700;">  "JavaScript"</span>,
+    <span style="color:#ffd700;">  "Node.js"</span>,
+    <span style="color:#ffd700;">  "UI/UX Design"</span>
+  ]
+&#125;
+</code></pre>
+  </div>
+</section>
+
+
 
   <section class="fade-in">
    <h2 class="section-title underline">Informazioni</h2>
@@ -356,7 +397,7 @@ section {
   </section>
 
   <div id="gif-container">
-  <img src="https://s3.ezgif.com/tmp/ezgif-3f585954463d48.gif" alt="GIF" />
+  <img src="https://d1j51sstdvqdsm.cloudfront.net/m5a51k%2Fpreview%2F68119246%2Fmain_large.gif?response-content-disposition=inline%3Bfilename%3D%22main_large.gif%22%3B&response-content-type=image%2Fgif&Expires=1750019192&Signature=hZ~2AAipdQn0uGDVyBb7VoBUbyoZB-taagl7Iy1mbeNNY7OgWK--SCfBBwv3cnWLdIJp2yubmHrRpYp2~kWz8KTyYjSnluvj3K8~85s6jlU4yw7uIft9jwenjsayosiBDA02SfCEobhHWniDSwE7RbZVG0xof3BuOcUBl0Wya719WJd8Hgbcb7S8Ffg4-muh3tZqKFetHitoi-LrK3HZgMYYoNJ8EJVvMsdaYJ4-Zsbix1qi-rYnvA9u9CqoUeLl3yrJGqLNPETUzrFwNuchcFU7ENCVNakfbOKVmDOrE5q1DFs8HS4Eq4usQHxyXrZ8vanSkRhhzHUFIi7M1tY2Xw__&Key-Pair-Id=APKAJT5WQLLEOADKLHBQ" alt="GIF" />
 </div>
 
   <footer>
@@ -385,10 +426,6 @@ tbtn.onclick = () => {
   document.querySelector('.hero p').innerText = italian
     ? 'SONO UN FOTTUTO SKIDDER'
     : 'I AM A FUCKING SKIDDER';
-
-  document.getElementById('bio-text').innerText = italian
-    ? "Studente dell'Istituto Tecnico in Informatica e Telecomunicazioni. Programmatore dal 2020, curioso per natura, smanetto con tecnologia, meccanica e codice ogni giorno."
-    : "Student at the Technical Institute of Computer Science and Telecommunications. Programmer since 2020, curious by nature, I tinker with technology, mechanics, and code every day.";
 
   document.querySelectorAll('.section-title')[0].innerText = italian ? 'Chi sono' : 'About Me';
   document.querySelectorAll('.section-title')[1].innerText = italian ? 'Informazioni' : 'Information';
