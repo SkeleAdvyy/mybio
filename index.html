@@ -1,3 +1,5 @@
+nono davvero, non funziona niente
+il mio html è questo
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -259,10 +261,71 @@ section {
   transform: none;
 }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(30, 30, 30, 0);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: background-color var(--transition);
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.hero {
+  padding-top: 160px;
+}
+
   </style>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <body class="dark">
+ <nav class="navbar glassy fade-in">
+  <div class="navbar-content">
+    <span class="logo">advyy.exe</span>
+    <ul class="nav-links">
+      <li><a href="#about">Chi sono</a></li>
+      <li><a href="#info">Informazioni</a></li>
+      <li><a href="#projects">Progetti</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+  </div>
+</nav>
+
   <canvas id="stars"></canvas>
 
   <header class="hero">
@@ -271,7 +334,7 @@ section {
     <p>SONO UN FOTTUTO SKIDDER</p>
   </header>
 
-<section class="fade-in">
+<section id="about" class="fade-in">
   <h2 class="section-title underline">Chi sono</h2>
 
   <div style="
@@ -317,21 +380,22 @@ section {
   </div>
 </section>
 
-
-
-  <section class="fade-in">
+  <section id="info" class="fade-in">
    <h2 class="section-title underline">Informazioni</h2>
     <div class="card-grid">
       <div class="card"><h3>📍 Posizione</h3><p>Ferrara, Italia</p></div>
       <div class="card"><h3>🏫 Scuola</h3><p>Informatica e Telecomunicazioni</p></div>
+           <div class="card"><h3>👦 Passioni</h3><p>Anime/Manga, Coding</p></div>
       <div class="card"><h3>🎨 Colore preferito</h3><p>Grigio/Viola</p></div>
       <div class="card"><h3>💻 Linguaggio Preferito</h3><p>C++ / Node.js</p></div>
+      <div class="card"><h3>💌 VideoGioco Preferito</h3><p>Ratchet & Clank</p></div>
       <div class="card"><h3>🔷 Discord</h3><p>40silent, dragodelletette</p></div>
       <div class="card"><h3>⚙️ Github</h3><p><a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a></p></div>
+      <div class="card"><h3>🟥 Youtube</h3><p><a href="https://www.youtube.com/@sonostarr" target="_blank">@sonostarr</a></p></div>
     </div>
   </section>
 
- <section class="fade-in">
+ <section id="projects" class="fade-in">
   <h2 class="section-title underline">Progetti</h2>
   <div class="carousel-wrapper">
     <button id="prev" class="arrow">&lt;</button>
@@ -369,7 +433,7 @@ section {
   </div>
 </section>
 
-  <section class="fade-in">
+  <section id="skills"  class="fade-in">
     <h2 class="section-title underline">Skills</h2>
     <div class="skills-list">
       <div class="skill"><i class="fab fa-js-square skill-icon"></i> JavaScript</div>
@@ -403,6 +467,13 @@ let italian = true;
 tbtn.onclick = () => {
   italian = !italian;
   tbtn.innerText = italian ? '🌐 English' : '🌐 Italiano';
+
+const navLabels = italian
+    ? ['Chi sono', 'Informazioni', 'Progetti', 'Skills']
+    : ['About Me', 'Information', 'Projects', 'Skills'];
+document.querySelectorAll('.nav-links li a').forEach((link, i) => {
+  if (navLabels[i]) link.textContent = navLabels[i];
+});
 
   document.querySelector('.hero p').innerText = italian
     ? 'SONO UN FOTTUTO SKIDDER'
@@ -491,7 +562,6 @@ const observer = new IntersectionObserver(entries => {
 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
 
   </script>
 </body>
