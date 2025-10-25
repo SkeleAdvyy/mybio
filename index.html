@@ -388,7 +388,7 @@ section {
       <div class="card"><h3>💻 Linguaggio Preferito</h3><p>C++ / Node.js</p></div>
       <div class="card"><h3>💌 VideoGioco Preferito</h3><p>Ratchet & Clank</p></div>
       <div class="card"><h3>🔷 Discord</h3><p>40silent, dragodelletette</p></div>
-      <div class="card"><h3>⚙️ Github</h3><p><a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a></p></div>
+      <div class="card"><h3>⚙ Github</h3><p><a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a></p></div>
       <div class="card"><h3>🟥 Youtube</h3><p><a href="https://www.youtube.com/@sonostarr" target="_blank">@sonostarr</a></p></div>
     </div>
   </section>
@@ -481,10 +481,10 @@ document.querySelectorAll('.nav-links li a').forEach((link, i) => {
   document.querySelectorAll('.section-title')[1].innerText = italian ? 'Informazioni' : 'Information';
   document.querySelectorAll('.section-title')[2].innerText = italian ? 'Progetti' : 'Projects';
 
-  const cards = document.querySelectorAll('.card');
+  const cards = document.querySelectorAll('.card');                                                                                                                                                                                                                                          
   const data = italian
-    ? ['📍 Posizione','Ferrara, Italia','🏫 Scuola','Informatica e Telecomunicazioni','🎨 Colore preferito','Grigio/Viola','💻 Linguaggio','JavaScript','🔷 Discord','40silent, dragodelletette','⚙️ Github','<a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a>']
-    : ['📍 Location','Ferrara, Italy','🏫 School','IT and Telecommunications','🎨 Favorite Color','Gray/Purple','💻 Language','JavaScript','🔷 Discord','40silent, dragodelletette','⚙️ Github','<a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a>'];
+    ? ['📍 Posizione','Ferrara, Italia','🏫 Scuola','Informatica e Telecomunicazioni','👦 Passioni','Anime/Manga, Coding','🎨 Colore preferito','Grigio/Viola','💻 Linguaggio preferito','C++ / Node.js','💌 VideoGioco Preferito','Ratchet & Clank','🔷 Discord','40silent, dragodelletette','⚙ Github','<a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a>','🟥 Youtube','<a href="https://youtube.com/sonostarr" target="_blank">@sonostarr</a>']
+    : ['📍 Location','Ferrara, Italy','🏫 School','IT and Telecommunications','👦 Passions','Anime/Manga, Coding','🎨 Favorite Color','Gray/Purple','💻 Favorite Language','C++ / Node.js','💌 Favorite Videogame','Ratchet & Clank','🔷 Discord','40silent, dragodelletette','⚙ Github','<a href="https://github.com/SkeleAdvyy" target="_blank">@SkeleAdvyy</a>','🟥 Youtube','<a href="https://youtube.com/sonostarr" target="_blank">@sonostarr</a>'];
   cards.forEach((c,i) => {
     c.querySelector('h3').innerHTML = data[i*2];
     c.querySelector('p').innerHTML = data[i*2+1];
