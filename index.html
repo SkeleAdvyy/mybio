@@ -320,6 +320,7 @@ section {
       <li><a href="#info">Informazioni</a></li>
       <li><a href="#projects">Progetti</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="https://skeleaddivi.xyz" target="_blank" rel="noopener noreferrer">Nuovo sito</a></li>
     </ul>
   </div>
 </nav>
@@ -467,8 +468,8 @@ tbtn.onclick = () => {
   tbtn.innerText = italian ? '🌐 English' : '🌐 Italiano';
 
 const navLabels = italian
-    ? ['Chi sono', 'Informazioni', 'Progetti', 'Skills']
-    : ['About Me', 'Information', 'Projects', 'Skills'];
+    ? ['Chi sono', 'Informazioni', 'Progetti', 'Skills', 'Nuovo sito']
+    : ['About Me', 'Information', 'Projects', 'Skills', 'New Website'];
 document.querySelectorAll('.nav-links li a').forEach((link, i) => {
   if (navLabels[i]) link.textContent = navLabels[i];
 });
